@@ -1,5 +1,7 @@
 require("dotenv").config();
 
+
+//making slash commands
 const {
   REST,
   ROUTES,
@@ -41,8 +43,11 @@ const commands = [
       },
     ],
   },
+  {
+    name: "embed",
+    description: "Sends an Embed",
+  }
 ];
-
 const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 (async () => {
   try {

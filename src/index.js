@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Client, IntentsBitField } = require("discord.js");
+const { Client, IntentsBitField, EmbedBuilder } = require("discord.js");
 
 const client = new Client({
   intents: [
@@ -25,7 +25,6 @@ client.on("messageCreate", (message) => {
   }
 });
 
-
 //interaction with sclash commands
 client.on("interactionCreate", (interaction) => {
   if (!interaction.isChatInputCommand()) return;
@@ -35,6 +34,26 @@ client.on("interactionCreate", (interaction) => {
     const num2 = interaction.options.get("second-number").value;
 
     interaction.reply(`the sum is ${num1 + num2}`);
+  }
+
+  //Embed creation 
+  if (interaction.commandName === "embed") {
+    const embed = new EmbedBuilder()
+      .setTitle("Embed Title")
+      .setDescription("This is an Embed Description")
+      .setColor("Random")
+      .addFields({
+        name: "1st Field Title",
+        value: "Some random value",
+        inline: true,
+      })
+      .addFields({
+        name: "2nd Field Title",
+        value: "Some random value",
+        inline: true,
+      });
+
+    interaction.reply({ embeds: [embed] });
   }
 });
 
