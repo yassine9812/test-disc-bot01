@@ -1,3 +1,5 @@
+//claiming a role 
+
 require("dotenv").config();
 const {
   Client,
@@ -44,7 +46,7 @@ client.on("ready", async (c) => {
     });
 
     await channel.send({
-      content: "Claim or remove the rome below",
+      content: "Claim or remove the role below",
       components: [row],
     });
     process.exit();

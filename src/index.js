@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Client, IntentsBitField, EmbedBuilder } = require("discord.js");
+const { Client, IntentsBitField, EmbedBuilder,ActivityType } = require("discord.js");
 
 const client = new Client({
   intents: [
@@ -12,6 +12,13 @@ const client = new Client({
 
 client.on("ready", (c) => {
   console.log(`🗿 ${c.user.tag} is online`);
+
+  //setting on activity type
+  client.user.setActivity({
+    name:'😎🔥🔝',
+    //you can set activity like watching playing...
+     type: ActivityType.Custom,
+  })
 });
 
 //auto reply
@@ -56,6 +63,7 @@ client.on("interactionCreate", (interaction) => {
     interaction.reply({ embeds: [embed] });
   }
 
+  //logic claiming role
   client.on("interactionCreate", async (interaction) => {
     try {
       if (!interaction.isButton()) return;
